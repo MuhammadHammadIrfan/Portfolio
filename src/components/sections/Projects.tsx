@@ -44,6 +44,8 @@ export default function Projects() {
                                                 src={project.images[0]}
                                                 alt={project.title}
                                                 fill
+                                                loading="lazy"
+                                                quality={85}
                                                 className="object-cover group-hover:scale-105 transition-transform duration-300"
                                             />
                                             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

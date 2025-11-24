@@ -27,7 +27,7 @@ export const projects: Project[] = [
         skills: ['Full-stack Development', 'AI Integration', 'Vector Databases', 'Workflow Automation', 'Authentication'],
         challenges: 'Implementing efficient vector search for document-based AI assistance, managing real-time mentor-student connections, and automating meeting workflows while maintaining data security.',
         learnings: 'Gained deep understanding of RAG (Retrieval Augmented Generation) systems, vector embeddings, and workflow automation. Learned to integrate multiple AI services and manage complex state in a full-stack application.',
-        images: ['/projects/umeedlearn/1.png', '/projects/umeedlearn/2.png', '/projects/umeedlearn/3.png'],
+        images: ['/projects/umeedlearn/1.png'],
         featured: true,
     },
     {
@@ -37,12 +37,12 @@ export const projects: Project[] = [
         shortDescription: 'AI medical tool for nephrologists providing clinical decision support',
         longDescription: 'Built a real-world clinical decision support system for nephrologists to aid in clinical decisions based on lab values like iPTH, calcium, and phosphorus. Designed to handle edge cases and provide safe, logic-driven treatment recommendations.',
         problem: 'Nephrologists need to make complex clinical decisions based on multiple lab values and patient conditions. Manual analysis is time-consuming and prone to oversight, especially with edge cases like missing or outdated labs.',
-        techStack: ['Node.js', 'Express.js', 'React', 'PostgreSQL', 'Medical Logic Engine'],
+        techStack: ['Node.js', 'Express.js', 'Next.js', 'PostgreSQL', 'Medical Logic Engine'],
         skills: ['Backend Development', 'Medical Software', 'Rule-based Systems', 'Data Validation', 'Collaboration with Medical Professionals'],
         challenges: 'Implementing safe rule-based medical logic that handles edge cases (missing labs, outdated values) while ensuring treatment recommendations are medically sound. Working closely with kidney specialists to validate the system.',
         learnings: 'Learned the importance of rigorous testing in medical software, understanding of nephrology basics, and how to translate medical expertise into software logic. Developed skills in working with domain experts.',
         githubUrl: 'https://github.com/MuhammadHammadIrfan/kidneycare-assistant',
-        images: ['/projects/kidneycare/1.png', '/projects/kidneycare/2.png'],
+        images: ['/projects/kidneycare/Doctor_screencapture-kidneycareassistant-unofficial-vercel-app-2025-09-23-19_05_12 (1).png', '/projects/kidneycare/login.png', '/projects/kidneycare/Doctor_screencapture-kidneycareassistant-unofficial-vercel-app-2025-09-23-19_05_12 (2).png', '/projects/kidneycare/Doctor_screencapture-kidneycareassistant-unofficial-vercel-app-2025-09-23-19_05_12 (3).png', '/projects/kidneycare/Doctor_screencapture-kidneycareassistant-unofficial-vercel-app-2025-09-23-19_05_12 (4).png', '/projects/kidneycare/Doctor_screencapture-kidneycareassistant-unofficial-vercel-app-2025-09-23-19_05_12 (5).png', '/projects/kidneycare/Doctor_screencapture-kidneycareassistant-unofficial-vercel-app-2025-09-23-19_05_12 (6).png', '/projects/kidneycare/Doctor_screencapture-kidneycareassistant-unofficial-vercel-app-2025-09-23-19_05_12 (7).png', '/projects/kidneycare/Doctor_screencapture-kidneycareassistant-unofficial-vercel-app-2025-09-23-19_05_12 (8).png', '/projects/kidneycare/Admin_screencapture-kidneycareassistant-unofficial-vercel-app-admin-doctors-2025-09-23-19_05_12 (1).png', '/projects/kidneycare/Admin_screencapture-kidneycareassistant-unofficial-vercel-app-admin-doctors-2025-09-23-19_17_53 (2).png'],
         featured: true,
     },
     {
@@ -57,24 +57,54 @@ export const projects: Project[] = [
         challenges: 'Designing a flexible role-based system that accommodates different university structures, implementing complex scheduling algorithms, and ensuring data consistency across multiple automated workflows.',
         learnings: 'Gained experience in building multi-tenant SaaS applications, implementing RBAC (Role-Based Access Control), and designing scalable database schemas for complex organizational hierarchies.',
         githubUrl: 'https://github.com/MuhammadHammadIrfan/EduSync',
-        images: ['/projects/edusync/1.png', '/projects/edusync/2.png', '/projects/edusync/3.png'],
+        images: ['/projects/edusync/LandingPage1.png', '/projects/edusync/LandingPage2.png', '/projects/edusync/admin_dashboard.png', '/projects/edusync/faculty_dashboard.png', '/projects/edusync/student_profile.png', '/projects/edusync/EduSync_Demo_Compressed.mp4', '/projects/edusync/Edusync_Supabase (2).jpeg', '/projects/edusync/Edusync_Prisma.jpeg'],
         featured: true,
     },
     {
         slug: 'lingomate',
         title: 'LingoMate',
         category: 'AI + Full Stack',
-        shortDescription: 'AI-powered web app for improving English fluency through real-time conversations',
-        longDescription: 'An interactive AI-powered web application to improve English fluency via real-time conversations. Built with React.js, integrates speech-to-text, text-to-speech, and GPT-based language models.',
-        problem: 'Many non-native English speakers lack opportunities for conversational practice. Traditional language learning apps focus on vocabulary and grammar but not real-time speaking skills.',
-        techStack: ['React.js', 'OpenAI GPT', 'Web Speech API', 'Node.js', 'Express.js'],
-        skills: ['Frontend Development', 'AI Integration', 'Speech Processing', 'Real-time Communication', 'API Integration'],
-        challenges: 'Implementing reliable speech-to-text conversion across different accents, managing real-time conversation flow with AI, and providing meaningful feedback on pronunciation and fluency.',
-        learnings: 'Learned to work with browser speech APIs, integrate GPT for natural conversations, and design user experiences for real-time interactive applications.',
+        shortDescription: 'AI-powered conversational English practice with real-time speech processing.',
+        longDescription:
+            'LingoMate is a full-stack AI-powered conversational English practice platform. It enables users to speak with an AI in real time using speech-to-text, intelligent responses, and text-to-speech. Designed to help non-native speakers build fluency, confidence, and interview readiness through natural conversation.',
+
+        problem:
+            'Millions of learners—especially in Pakistan—lack affordable, structured, and real conversational English practice. Existing apps focus heavily on grammar drills, written exercises, or text chat rather than real spoken conversation and feedback.',
+
+        techStack: [
+            'React.js',
+            'Node.js',
+            'Express.js',
+            'Azure Speech-to-Text',
+            'Azure Text-to-Speech',
+            'Gemini (LLM)'
+        ],
+
+        skills: [
+            'Full Stack Development',
+            'AI Integration',
+            'Speech Recognition',
+            'Real-Time Audio Processing',
+            'API Design & Integration',
+            'State Management'
+        ],
+
+        challenges:
+            'Handling real-time audio recording in the browser, converting audio blobs to valid WAV buffers, ensuring compatibility with Azure STT, managing delays in speech processing, and integrating LLM responses smoothly with TTS playback.',
+
+        learnings:
+            'Gained experience with browser MediaRecorder API, base64 audio encoding/decoding, Azure Cognitive Services, LLM integration, and designing natural conversational flows. Improved understanding of handling asynchronous audio pipelines end-to-end.',
+
         githubUrl: 'https://github.com/MuhammadHammadIrfan/Lingo-Mate',
-        images: ['/projects/lingomate/1.png', '/projects/lingomate/2.png'],
-        featured: true,
+
+        images: [
+            '/projects/lingomate/chat.png',
+            '/projects/lingomate/LingoMateShortDemo.mp4'
+        ],
+
+        featured: true
     },
+
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
