@@ -91,7 +91,7 @@ export default function Carousel({ images, alt }: CarouselProps) {
                                 src={currentItem}
                                 controls
                                 className="w-full h-full object-contain"
-                                preload="metadata"
+                                preload="none"
                             >
                                 Your browser does not support the video tag.
                             </video>
@@ -151,8 +151,8 @@ export default function Carousel({ images, alt }: CarouselProps) {
                                 setCurrentIndex(index);
                             }}
                             className={`transition-all duration-300 rounded-full ${index === currentIndex
-                                    ? 'bg-blue-600 w-8 h-2'
-                                    : 'bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500 w-2 h-2'
+                                ? 'bg-blue-600 w-8 h-2'
+                                : 'bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500 w-2 h-2'
                                 }`}
                             aria-label={`Go to ${isVideo(item) ? 'video' : 'image'} ${index + 1}`}
                             title={isVideo(item) ? `Video ${index + 1}` : `Image ${index + 1}`}
