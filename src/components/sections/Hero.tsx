@@ -66,7 +66,7 @@ export default function Hero() {
                         </motion.a>
 
                         <motion.a
-                            href="https://drive.google.com/file/d/1HEArVMsQbaJnvdoMa2pFO4XuVPLyiPQd/preview"
+                            href="https://drive.google.com/file/d/130Cs-ceVVFiCe8Vkt_9ELZIcHGy5d8KF/view"
                             target="_blank"
                             rel="noopener noreferrer"
                             whileHover={{ scale: 1.05 }}

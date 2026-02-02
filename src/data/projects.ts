@@ -1,7 +1,7 @@
 export interface Project {
     slug: string;
     title: string;
-    category: 'AI + Full Stack' | 'Web Development' | 'Other CS Projects';
+    category: 'AI + Full Stack' | 'Web Development' | 'Other CS Projects'|'Full Stack + PWA';
     shortDescription: string;
     longDescription: string;
     problem: string;
@@ -17,17 +17,18 @@ export interface Project {
 
 export const projects: Project[] = [
     {
-        slug: 'umeedlearn',
-        title: 'UmeedLearn',
-        category: 'AI + Full Stack',
-        shortDescription: 'AI-powered community learning platform connecting students with mentors',
-        longDescription: 'An AI-powered community learning platform that connects students with mentors and provides document-based AI learning assistance using LangChain, Hugging Face, and Gemini.',
-        problem: 'Students often struggle to find quality mentors and personalized learning resources. Traditional learning platforms lack intelligent assistance and community-driven mentorship.',
-        techStack: ['Next.js', 'Supabase', 'LangChain', 'Hugging Face', 'Gemini AI', 'n8n', 'PostgreSQL'],
-        skills: ['Full-stack Development', 'AI Integration', 'Vector Databases', 'Workflow Automation', 'Authentication'],
-        challenges: 'Implementing efficient vector search for document-based AI assistance, managing real-time mentor-student connections, and automating meeting workflows while maintaining data security.',
-        learnings: 'Gained deep understanding of RAG (Retrieval Augmented Generation) systems, vector embeddings, and workflow automation. Learned to integrate multiple AI services and manage complex state in a full-stack application.',
-        images: ['/projects/umeedlearn/1.png'],
+        slug: 'miprinters',
+        title: 'MI Printers',
+        category: 'Full Stack + PWA',
+        shortDescription: 'Offline-first invoice management system for a printing business with cloud sync',
+        longDescription: 'A Progressive Web App (PWA) invoice management system built for a printing business, featuring offline-first architecture with IndexedDB, real-time cloud synchronization with Supabase, and owner-only authentication for secure business operations.',
+        problem: 'Small printing businesses need a reliable invoicing system that works even without internet connectivity. Traditional cloud-only solutions fail in areas with unstable network, leading to lost sales and frustrated customers waiting for invoice generation.',
+        techStack: ['Next.js 16', 'TypeScript', 'Supabase', 'IndexedDB (Dexie.js)', 'Zustand', 'Tailwind CSS', 'Service Workers'],
+        skills: ['Offline-First Architecture', 'PWA Development', 'State Management', 'Cloud Sync Strategies', 'Mobile-First UI/UX', 'SQL Functions'],
+        challenges: 'Implementing bidirectional sync between IndexedDB and Supabase while handling conflicts, preventing duplicate invoice numbers across offline sessions, implementing soft-delete that persists across devices, and managing invoice number sequences that continue correctly even after settings changes or app reinstalls.',
+        learnings: 'Mastered offline-first architecture patterns including optimistic UI updates, sync queues for pending changes, and conflict resolution strategies. Learned to design robust cloud functions (PostgreSQL/Supabase RPC) that handle edge cases like duplicate keys and soft deletes. Gained experience in PWA service worker registration and mobile-responsive design.',
+        githubUrl: 'https://github.com/MuhammadHammadIrfan/MIPrinters',
+        images: ['/projects/miprinters/landing_page.png','/projects/miprinters/contact.png','/projects/miprinters/dashboard.png','/projects/miprinters/invoices.png','/projects/miprinters/new_invoice.png','/projects/miprinters/layout_invoice.png','/projects/miprinters/record_payment.png','/projects/miprinters/customers.png'],
         featured: true,
     },
     {
