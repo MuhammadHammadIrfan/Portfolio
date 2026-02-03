@@ -5,27 +5,41 @@ export interface SkillCategory {
 
 export const skillsData: SkillCategory[] = [
     {
-        category: 'Programming Languages',
-        skills: ['JavaScript', 'Python', 'C', 'C++', 'Java'],
+        category: 'Core Stack',
+        skills: ['Node.js', 'Python', 'Next.js', 'React', 'Express.js', 'TypeScript'],
     },
     {
-        category: 'Backend',
-        skills: ['Node.js', 'Express.js', 'REST APIs'],
+        category: 'AI & Automation',
+        skills: [
+            'LLM Function Calling', 
+            'Agentic Workflows', 
+            'LangChain', 
+            'LlamaIndex', 
+            'n8n', 
+            'Prompt Engineering', 
+            'Vector DBs (PGVector)'
+        ],
     },
     {
-        category: 'Frontend',
-        skills: ['React.js', 'Next.js', 'Tailwind CSS'],
+        category: 'Backend & Databases',
+        skills: ['PostgreSQL', 'Supabase', 'MongoDB', 'MySQL', 'Prisma ORM', 'Redis', 'REST APIs'],
     },
     {
-        category: 'Databases',
-        skills: ['PostgreSQL', 'MySQL', 'Supabase', 'MongoDB'],
+        category: 'Tools & DevOps',
+        skills: ['Git', 'GitHub', 'Vercel', 'Firebase', 'Docker (Basic)', 'Webhooks'],
     },
     {
-        category: 'DevOps/Tools',
-        skills: ['Git', 'GitHub', 'Vercel', 'Firebase', 'Prisma ORM', 'AWS (Basic)'],
+        category: 'Computer Science Core',
+        skills: ['OOP', 'Data Structures', 'System Architecture', 'Workflow Automation', 'API Design'],
     },
     {
-        category: 'Soft Skills',
-        skills: ['Communication', 'Requirement Analysis', 'Self-Motivated', 'Team Collaboration'],
+        category: 'Professional Skills',
+        skills: [
+            'System Thinking', 
+            'Data Flow Modeling', 
+            'Reliable AI Pipelines', 
+            'Problem Solving', 
+            'Technical Documentation'
+        ],
     },
 ];
