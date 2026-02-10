@@ -1,25 +1,53 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 
+// EmailJS Configuration
+// Sign up at https://www.emailjs.com/ and replace these with your actual IDs
+const EMAILJS_SERVICE_ID = 'service_s3sd8ri'; // Replace with your EmailJS service ID
+const EMAILJS_TEMPLATE_ID = 'template_j1ntgsz'; // Replace with your EmailJS template ID
+const EMAILJS_PUBLIC_KEY = 'u7PN_Rrpxje7Wgq_t'; // Replace with your EmailJS public key
+
 export default function ContactPage() {
+    const formRef = useRef<HTMLFormElement>(null);
     const [formData, setFormData] = useState({
-        name: '',
-        email: '',
+        from_name: '',
+        from_email: '',
         subject: '',
         message: '',
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // TODO: Implement form submission logic
-        console.log('Form submitted:', formData);
-        alert('Thank you for your message! I will get back to you soon.');
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        
+        if (!formRef.current) return;
+
+        setIsSubmitting(true);
+        setSubmitStatus('idle');
+
+        try {
+            await emailjs.sendForm(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                formRef.current,
+                EMAILJS_PUBLIC_KEY
+            );
+            
+            setSubmitStatus('success');
+            setFormData({ from_name: '', from_email: '', subject: '', message: '' });
+        } catch (error) {
+            console.error('Email sending failed:', error);
+            setSubmitStatus('error');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -27,6 +55,10 @@ export default function ContactPage() {
             ...formData,
             [e.target.name]: e.target.value,
         });
+        // Reset status when user starts typing again
+        if (submitStatus !== 'idle') {
+            setSubmitStatus('idle');
+        }
     };
 
     return (
@@ -51,7 +83,22 @@ export default function ContactPage() {
                                 <h2 className="text-2xl font-bold text-foreground mb-6">
                                     Send a Message
                                 </h2>
-                                <form onSubmit={handleSubmit} className="space-y-4">
+                                
+                                {/* Status Messages */}
+                                {submitStatus === 'success' && (
+                                    <div className="mb-4 p-4 bg-green-100 dark:bg-green-900/30 border border-green-500 rounded-lg text-green-700 dark:text-green-400">
+                                        Thank you for your message! I'll get back to you soon.
+                                    </div>
+                                )}
+                                {submitStatus === 'error' && (
+                                    <div className="mb-4 p-4 bg-red-100 dark:bg-red-900/30 border border-red-500 rounded-lg text-red-700 dark:text-red-400">
+                                        Failed to send message. Please try again or email me directly.
+                                    </div>
+                                )}
+                                
+                                <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
+                                    {/* Hidden field for recipient email */}
+                                    <input type="hidden" name="to_email" value="muhammadhammadirfan1@gmail.com" />
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <div>
                                             <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
@@ -60,11 +107,12 @@ export default function ContactPage() {
                                             <input
                                                 type="text"
                                                 id="name"
-                                                name="name"
-                                                value={formData.name}
+                                                name="from_name"
+                                                value={formData.from_name}
                                                 onChange={handleChange}
                                                 required
-                                                className="w-full px-4 py-2 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-foreground"
+                                                disabled={isSubmitting}
+                                                className="w-full px-4 py-2 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-foreground disabled:opacity-50"
                                                 placeholder="Your name"
                                             />
                                         </div>
@@ -75,11 +123,12 @@ export default function ContactPage() {
                                             <input
                                                 type="email"
                                                 id="email"
-                                                name="email"
-                                                value={formData.email}
+                                                name="from_email"
+                                                value={formData.from_email}
                                                 onChange={handleChange}
                                                 required
-                                                className="w-full px-4 py-2 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-foreground"
+                                                disabled={isSubmitting}
+                                                className="w-full px-4 py-2 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-foreground disabled:opacity-50"
                                                 placeholder="your.email@example.com"
                                             />
                                         </div>
@@ -95,7 +144,8 @@ export default function ContactPage() {
                                             value={formData.subject}
                                             onChange={handleChange}
                                             required
-                                            className="w-full px-4 py-2 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-foreground"
+                                            disabled={isSubmitting}
+                                            className="w-full px-4 py-2 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-foreground disabled:opacity-50"
                                             placeholder="What's this about?"
                                         />
                                     </div>
@@ -109,13 +159,19 @@ export default function ContactPage() {
                                             value={formData.message}
                                             onChange={handleChange}
                                             required
+                                            disabled={isSubmitting}
                                             rows={6}
-                                            className="w-full px-4 py-2 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-foreground resize-none"
+                                            className="w-full px-4 py-2 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-foreground resize-none disabled:opacity-50"
                                             placeholder="Tell me about your project or inquiry..."
                                         />
                                     </div>
-                                    <Button type="submit" variant="primary" className="w-full">
-                                        Send Message
+                                    <Button 
+                                        type="submit" 
+                                        variant="primary" 
+                                        className="w-full"
+                                        disabled={isSubmitting}
+                                    >
+                                        {isSubmitting ? 'Sending...' : 'Send Message'}
                                     </Button>
                                 </form>
                             </Card>
@@ -133,10 +189,10 @@ export default function ContactPage() {
                                         <div>
                                             <p className="text-sm text-muted-foreground mb-1">Email</p>
                                             <a
-                                                href="mailto:your.email@example.com"
+                                                href="mailto:muhammadhammadirfan1@gmail.com"
                                                 className="text-foreground hover:text-primary transition-colors"
                                             >
-                                                your.email@example.com
+                                                muhammadhammadirfan1@gmail.com
                                             </a>
                                         </div>
                                     </div>
