@@ -17,29 +17,25 @@ export const skillsData: SkillCategory[] = [
             'LlamaIndex', 
             'n8n', 
             'Prompt Engineering', 
-            'Vector DBs (PGVector)'
+            'Vector DBs (PGVector)', 
+            'Automated Pipelines'
         ],
     },
     {
         category: 'Backend & Databases',
-        skills: ['PostgreSQL', 'Supabase', 'MongoDB', 'MySQL', 'Prisma ORM', 'Redis', 'REST APIs'],
+        skills: ['PostgreSQL', 'Supabase', 'MongoDB', 'MySQL', 'Redis', 'Prisma ORM', 'REST APIs'],
     },
     {
-        category: 'Tools & DevOps',
-        skills: ['Git', 'GitHub', 'Vercel', 'Firebase', 'Docker (Basic)', 'Webhooks'],
+        category: 'Cloud & Tools',
+        skills: ['Git', 'GitHub', 'Vercel', 'Firebase', 'Docker (Basic)', 'AWS (Basic)', 'Webhooks', 'CI/CD Basics'],
     },
     {
-        category: 'Computer Science Core',
-        skills: ['OOP', 'Data Structures', 'System Architecture', 'Workflow Automation', 'API Design'],
+        category: 'Computer Science Fundamentals',
+        skills: ['OOP', 'Data Structures', 'System Architecture', 'API Design', 'Workflow Modeling'],
     },
     {
         category: 'Professional Skills',
-        skills: [
-            'System Thinking', 
-            'Data Flow Modeling', 
-            'Reliable AI Pipelines', 
-            'Problem Solving', 
-            'Technical Documentation'
-        ],
+        skills: ['System Thinking', 'Architecture Design', 'Data Flow Modeling', 'Reliable AI Pipelines', 'Problem Solving', 'Clean Code', 'Technical Documentation'],
     },
 ];
+

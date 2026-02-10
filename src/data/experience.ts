@@ -11,13 +11,25 @@ export const experiences: Experience[] = [
     {
         id: 'kidneycare',
         title: 'AI & Software Developer',
-        company: 'KidneyCare Clinical Assistant (Industry Project) — SEECS, NUST',
+        company: 'KidneyCare Clinical Assistant — SEECS, NUST',
         period: 'Jun 2025 – Present',
         description: [
-            'Built a clinical decision support system under the supervision of a senior SEECS instructor in collaboration with medical professionals.',
-            'Implemented safe rule-based medical logic for nephrologists using real lab values (iPTH, calcium, phosphorus).',
-            'Designed system to handle edge cases, missing labs, and generate safe treatment recommendations.',
-            'Delivered a functional MVP used for real feedback from instructors and kidney specialists.',
+            'Developed a clinical decision support system to assist nephrologists in analyzing patient data and treatment options.',
+            'Implemented rule-based AI logic aligned with medical guidelines to generate safe, explainable recommendations.',
+            'Designed workflows that handle missing or unreliable lab data, ensuring reliable and structured outputs for physicians.',
+            'Delivered a functional MVP used for feedback and validation by instructors and kidney specialists, supporting real clinical decision-making.',
+        ],
+        current: true,
+    },
+    {
+        id: 'ai-agentic',
+        title: 'LLM & Agentic Automation Developer',
+        company: 'Independent Research & Implementation',
+        period: 'Jan 2025 – Present',
+        description: [
+            'Designed and implemented agent-based AI systems that combine LLM reasoning with tool usage, context retrieval, and function calling.',
+            'Built end-to-end pipelines integrating Supabase (PostgreSQL and vector storage) to automate workflows across databases, APIs, and AI models.',
+            'Enabled real business automation by connecting multi-system architectures into reliable AI-driven solutions.',
         ],
         current: true,
     },
@@ -27,10 +39,10 @@ export const experiences: Experience[] = [
         company: 'AskUsSolution (Remote)',
         period: 'Jul 2024 – Aug 2024',
         description: [
-            'Worked as a remote web development intern focusing on frontend and backend fundamentals.',
-            'Collaborated with the team on small-scale projects and improved understanding of React, Node.js, and Git-based workflows.',
-            'Gained hands-on experience with REST APIs, UI development, and deployment basics.',
+            'Contributed to small-scale web projects, gaining practical experience with React, Node.js, REST APIs, and Git workflows.',
+            'Developed frontend and backend features, learned deployment basics, and strengthened understanding of production-ready web development.',
         ],
         current: false,
     },
 ];
+

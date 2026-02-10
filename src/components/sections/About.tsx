@@ -7,28 +7,29 @@ const expertiseAreas = [
     {
         icon: HiCode,
         title: 'Full-Stack Development',
-        description: 'Expert in React, Next.js, Node.js, and Express',
+        description: 'Building production-grade web applications with React, Next.js, Node.js, and Express',
         gradient: 'from-blue-500 to-cyan-500',
     },
     {
         icon: HiDatabase,
-        title: 'Backend Architecture',
-        description: 'Skilled in PostgreSQL, Supabase, and MongoDB',
+        title: 'Backend Architecture & Databases',
+        description: 'Designing reliable data models, APIs, and workflows using PostgreSQL, Supabase, MongoDB, and MySQL',
         gradient: 'from-purple-500 to-pink-500',
     },
     {
         icon: HiChip,
-        title: 'AI Integration',
-        description: 'Experience with LangChain, GPT, and ML models',
+        title: 'AI & Automation',
+        description: 'Integrating LLMs, LangChain, AI agents, and workflow automation into real-world systems',
         gradient: 'from-orange-500 to-red-500',
     },
     {
         icon: HiLightningBolt,
-        title: 'Fast Learner',
-        description: 'Quick to adapt to new technologies and frameworks',
+        title: 'Adaptability & Problem Solving',
+        description: 'Quickly mastering new technologies and designing solutions for complex challenges',
         gradient: 'from-green-500 to-emerald-500',
     },
 ];
+
 
 export default function About() {
     return (
@@ -47,10 +48,7 @@ export default function About() {
 
                     <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-8 mb-8 shadow-lg">
                         <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed text-center max-w-4xl mx-auto">
-                            Full-stack developer with strong backend skills in Node.js, Express, and Supabase.
-                            Experienced in building AI-powered and data-driven applications. Skilled in end-to-end
-                            development, from requirements gathering and architecture to deployment. Comfortable
-                            working in fast-paced, remote environments and delivering production-ready solutions.
+                            I’m a full-stack developer with a strong backend focus, experienced in building AI-powered and data-driven applications. I enjoy tackling real-world problems by combining databases, APIs, and AI models into reliable systems. From designing scalable architectures to delivering production-ready solutions, I thrive in fast-paced, collaborative environments and continuously adapt to new technologies to create meaningful impact.
                         </p>
                     </div>
 

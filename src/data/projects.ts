@@ -32,78 +32,49 @@ export const projects: Project[] = [
         featured: true,
     },
     {
-        slug: 'kidneycare-assistant',
-        title: 'KidneyCare Clinical Assistant',
-        category: 'AI-Powered Applications',
-        shortDescription: 'AI medical tool for nephrologists providing clinical decision support',
-        longDescription: 'Built a real-world clinical decision support system for nephrologists to aid in clinical decisions based on lab values like iPTH, calcium, and phosphorus. Designed to handle edge cases and provide safe, logic-driven treatment recommendations.',
-        problem: 'Nephrologists need to make complex clinical decisions based on multiple lab values and patient conditions. Manual analysis is time-consuming and prone to oversight, especially with edge cases like missing or outdated labs.',
-        techStack: ['Node.js', 'Express.js', 'Next.js', 'PostgreSQL', 'Medical Logic Engine'],
-        skills: ['Backend Development', 'Medical Software', 'Rule-based Systems', 'Data Validation', 'Collaboration with Medical Professionals'],
-        challenges: 'Implementing safe rule-based medical logic that handles edge cases (missing labs, outdated values) while ensuring treatment recommendations are medically sound. Working closely with kidney specialists to validate the system.',
-        learnings: 'Learned the importance of rigorous testing in medical software, understanding of nephrology basics, and how to translate medical expertise into software logic. Developed skills in working with domain experts.',
-        githubUrl: 'https://github.com/MuhammadHammadIrfan/kidneycare-assistant',
-        images: ['/projects/kidneycare/Doctor_screencapture-kidneycareassistant-unofficial-vercel-app-2025-09-23-19_05_12 (1).png', '/projects/kidneycare/login.png', '/projects/kidneycare/Doctor_screencapture-kidneycareassistant-unofficial-vercel-app-2025-09-23-19_05_12 (2).png', '/projects/kidneycare/Doctor_screencapture-kidneycareassistant-unofficial-vercel-app-2025-09-23-19_05_12 (3).png', '/projects/kidneycare/Doctor_screencapture-kidneycareassistant-unofficial-vercel-app-2025-09-23-19_05_12 (4).png', '/projects/kidneycare/Doctor_screencapture-kidneycareassistant-unofficial-vercel-app-2025-09-23-19_05_12 (5).png', '/projects/kidneycare/Doctor_screencapture-kidneycareassistant-unofficial-vercel-app-2025-09-23-19_05_12 (6).png', '/projects/kidneycare/Doctor_screencapture-kidneycareassistant-unofficial-vercel-app-2025-09-23-19_05_12 (7).png', '/projects/kidneycare/Doctor_screencapture-kidneycareassistant-unofficial-vercel-app-2025-09-23-19_05_12 (8).png', '/projects/kidneycare/Admin_screencapture-kidneycareassistant-unofficial-vercel-app-admin-doctors-2025-09-23-19_05_12 (1).png', '/projects/kidneycare/Admin_screencapture-kidneycareassistant-unofficial-vercel-app-admin-doctors-2025-09-23-19_17_53 (2).png'],
-        featured: true,
-    },
+    slug:'kidneycare-assistant',
+    title:'KidneyCare Clinical Assistant',
+    category:'AI-Powered Applications',
+    shortDescription:'Clinical decision support system for nephrologists to manage lab reports, follow-ups, and treatment recommendations.',
+    longDescription:'KidneyCare Clinical Assistant is a real-world clinical decision support system developed under academic and medical supervision. It helps nephrologists manage patient records, enter and validate lab results, track historical trends, and generate treatment and medication recommendations based on hospital-defined clinical logic. The system is designed to handle real clinical constraints such as missing, outdated, or conflicting lab data, and ensures all recommendations are structured, reviewable, and safe for physician decision-making.',
+    problem:'Nephrologists must interpret multiple lab values across time while managing follow-up visits and treatment decisions. Manual analysis of reports, especially when lab data is missing or outdated, increases cognitive load and risk of oversight. There was a need for a system that centralizes patient history, validates lab relevance, and supports consistent, guideline-based decision-making.',
+    techStack:['Next.js','Node.js','Supabase (PostgreSQL)','Role-based Access Control','Rule-based Clinical Logic Engine'],
+    skills:['Backend System Design','Healthcare Software Engineering','Rule-based Decision Systems','Database Modeling for Clinical Data','Collaboration with Medical Professionals'],
+    challenges:'Designing medical logic that is safe, explainable, and aligned with real hospital workflows was the biggest challenge. The system had to correctly handle edge cases such as missing tests, expired lab validity, and partial reports, while still providing useful recommendations. Translating clinical reasoning into deterministic software logic required close iteration with nephrology instructors and careful validation.',
+    learnings:'This project provided hands-on experience in building safety-critical software. I learned how clinical decision support differs from typical applications, the importance of explainability in medical systems, and how to convert domain expertise into structured logic. It also strengthened my ability to collaborate with non-technical domain experts and design systems meant for real clinical use rather than demos.',
+    githubUrl:'https://github.com/MuhammadHammadIrfan/kidneycare-assistant',
+    images:['/projects/kidneycare/Doctor_screencapture-kidneycareassistant-unofficial-vercel-app-2025-09-23-19_05_12 (1).png','/projects/kidneycare/login.png','/projects/kidneycare/Doctor_screencapture-kidneycareassistant-unofficial-vercel-app-2025-09-23-19_05_12 (2).png','/projects/kidneycare/Doctor_screencapture-kidneycareassistant-unofficial-vercel-app-2025-09-23-19_05_12 (3).png','/projects/kidneycare/Doctor_screencapture-kidneycareassistant-unofficial-vercel-app-2025-09-23-19_05_12 (4).png','/projects/kidneycare/Doctor_screencapture-kidneycareassistant-unofficial-vercel-app-2025-09-23-19_05_12 (5).png','/projects/kidneycare/Doctor_screencapture-kidneycareassistant-unofficial-vercel-app-2025-09-23-19_05_12 (6).png','/projects/kidneycare/Doctor_screencapture-kidneycareassistant-unofficial-vercel-app-2025-09-23-19_05_12 (7).png','/projects/kidneycare/Doctor_screencapture-kidneycareassistant-unofficial-vercel-app-2025-09-23-19_05_12 (8).png','/projects/kidneycare/Admin_screencapture-kidneycareassistant-unofficial-vercel-app-admin-doctors-2025-09-23-19_05_12 (1).png','/projects/kidneycare/Admin_screencapture-kidneycareassistant-unofficial-vercel-app-admin-doctors-2025-09-23-19_17_53 (2).png'],
+    featured:true
+    },  
     {
-        slug: 'edusync',
-        title: 'EduSync',
-        category: 'Production Full-Stack Systems',
-        shortDescription: 'Role-based university automation platform for scheduling and onboarding',
-        longDescription: 'A SaaS platform automating university operations including faculty/student onboarding, scheduling, and invoicing. Improved workflow efficiency by automating repetitive administrative tasks.',
-        problem: 'Universities face significant administrative overhead with manual processes for onboarding, scheduling, and invoicing. This leads to inefficiencies, errors, and wasted staff time.',
-        techStack: ['Next.js', 'Supabase', 'PostgreSQL', 'Tailwind CSS', 'Prisma ORM'],
-        skills: ['Full-stack Development', 'Role-based Access Control', 'Database Design', 'Automation', 'SaaS Architecture'],
-        challenges: 'Designing a flexible role-based system that accommodates different university structures, implementing complex scheduling algorithms, and ensuring data consistency across multiple automated workflows.',
-        learnings: 'Gained experience in building multi-tenant SaaS applications, implementing RBAC (Role-Based Access Control), and designing scalable database schemas for complex organizational hierarchies.',
-        githubUrl: 'https://github.com/MuhammadHammadIrfan/EduSync',
-        images: ['/projects/edusync/LandingPage1.png', '/projects/edusync/LandingPage2.png', '/projects/edusync/admin_dashboard.png', '/projects/edusync/faculty_dashboard.png', '/projects/edusync/student_profile.png', '/projects/edusync/EduSync_Demo_Compressed.mp4', '/projects/edusync/Edusync_Supabase (2).jpeg', '/projects/edusync/Edusync_Prisma.jpeg'],
-        featured: true,
+    slug: 'edusync',
+    title: 'EduSync',
+    category: 'Production Full-Stack Systems',
+    shortDescription: 'A production-scale university automation platform built to streamline communication, scheduling, and academic workflows.',
+    longDescription: 'EduSync is a full-stack university automation system designed to solve real operational challenges in academic institutions by centralizing faculty, student, and administrative workflows including onboarding, scheduling, attendance, events, and notifications into a single role-based platform focused on reducing manual coordination, improving communication, and scaling reliably with real institutional data.',
+    problem: 'Universities often rely on fragmented or manual processes for managing students, faculty, scheduling, and communication, leading to delayed notifications, inconsistent records, duplicated effort, and poor visibility across departments.',
+    techStack: ['Next.js', 'Supabase', 'PostgreSQL', 'Prisma ORM', 'Tailwind CSS', 'NextAuth.js'],
+    skills: ['Full-Stack Development', 'Backend Architecture', 'Role-Based Access Control (RBAC)', 'Database Design', 'Workflow Automation', 'Production System Design'],
+    challenges: 'Designing a flexible role-based system that accurately models real university hierarchies across departments, years, sections, faculty roles, and advisors while maintaining data consistency at scale, handling approval-based workflows, bulk imports, and high-volume relational data.',
+    learnings: 'Gained strong hands-on experience in backend ownership and system design including structuring large schemas, building secure API layers, managing real data scale, making architecture decisions under production constraints, and coordinating a team around clear milestones.',
+    githubUrl: 'https://github.com/MuhammadHammadIrfan/EduSync',
+    images: ['/projects/edusync/LandingPage1.png', '/projects/edusync/LandingPage2.png', '/projects/edusync/admin_dashboard.png', '/projects/edusync/faculty_dashboard.png', '/projects/edusync/student_profile.png', '/projects/edusync/EduSync_Demo_Compressed.mp4', '/projects/edusync/Edusync_Supabase (2).jpeg', '/projects/edusync/Edusync_Prisma.jpeg'],
+    featured: true,
     },
     {
         slug: 'lingomate',
         title: 'LingoMate',
         category: 'AI-Powered Applications',
-        shortDescription: 'AI-powered conversational English practice with real-time speech processing.',
-        longDescription:
-            'LingoMate is a full-stack AI-powered conversational English practice platform. It enables users to speak with an AI in real time using speech-to-text, intelligent responses, and text-to-speech. Designed to help non-native speakers build fluency, confidence, and interview readiness through natural conversation.',
-
-        problem:
-            'Millions of learners—especially in Pakistan—lack affordable, structured, and real conversational English practice. Existing apps focus heavily on grammar drills, written exercises, or text chat rather than real spoken conversation and feedback.',
-
-        techStack: [
-            'React.js',
-            'Node.js',
-            'Express.js',
-            'Azure Speech-to-Text',
-            'Azure Text-to-Speech',
-            'Gemini (LLM)'
-        ],
-
-        skills: [
-            'Full Stack Development',
-            'AI Integration',
-            'Speech Recognition',
-            'Real-Time Audio Processing',
-            'API Design & Integration',
-            'State Management'
-        ],
-
-        challenges:
-            'Handling real-time audio recording in the browser, converting audio blobs to valid WAV buffers, ensuring compatibility with Azure STT, managing delays in speech processing, and integrating LLM responses smoothly with TTS playback.',
-
-        learnings:
-            'Gained experience with browser MediaRecorder API, base64 audio encoding/decoding, Azure Cognitive Services, LLM integration, and designing natural conversational flows. Improved understanding of handling asynchronous audio pipelines end-to-end.',
-
+        shortDescription: 'An AI-powered English speaking companion that helps users practice real conversations through voice, not just text or grammar drills.',
+        longDescription: 'LingoMate is a full-stack AI-powered web application designed to help non-native English speakers improve their spoken English through real-time voice conversations. Users speak naturally, receive intelligent AI responses, and hear replies back using speech-to-text and text-to-speech technologies. The platform focuses on building fluency, confidence, and practical speaking skills rather than rote grammar learning.',
+        problem: 'Many English learners, particularly in Pakistan, struggle to find affordable and judgment-free environments to practice real spoken English. Most existing language learning apps prioritize vocabulary, grammar exercises, or text-based interactions, leaving a gap for natural, real-time conversation practice that builds confidence and fluency.',
+        techStack: ['React.js','Node.js','Express.js','Azure Speech-to-Text','Azure Text-to-Speech','Gemini (LLM)'],
+        skills: ['Full Stack Web Development','AI & LLM Integration','Speech Processing','Real-Time Audio Handling','API Integration','Asynchronous System Design'],
+        challenges: 'Implementing real-time voice interaction in the browser was a major challenge, including recording and processing audio, converting browser-generated audio blobs into Azure-compatible WAV formats, and handling strict speech API requirements. Additional complexity came from managing latency across speech recognition, AI response generation, and speech synthesis to ensure smooth, natural conversations.',
+        learnings: 'This project strengthened my understanding of browser audio APIs, binary data handling, and end-to-end speech pipelines. I gained hands-on experience integrating Azure Cognitive Services and large language models, managing asynchronous workflows, and designing conversational user experiences that feel responsive and human-like.',
         githubUrl: 'https://github.com/MuhammadHammadIrfan/Lingo-Mate',
-
-        images: [
-            '/projects/lingomate/chat.png',
-            '/projects/lingomate/LingoMateShortDemo.mp4'
-        ],
-
-        featured: false
+        images: ['/projects/lingomate/chat.png','/projects/lingomate/LingoMateShortDemo.mp4'],
+        featured: true
     },
 
 ];
