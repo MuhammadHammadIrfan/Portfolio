@@ -79,19 +79,6 @@ export default function Hero() {
                                 View Resume
                             </div>
                         </motion.a>
-
-                        <motion.a
-                            href="/resume.pdf"
-                            download
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="group relative px-8 py-4 rounded-lg font-medium transition-all duration-200 inline-flex items-center justify-center border-2 border-slate-300 dark:border-slate-600 hover:border-blue-500 dark:hover:border-blue-400"
-                        >
-                            <div className="relative flex items-center text-slate-700 dark:text-slate-300 group-hover:text-blue-600 dark:group-hover:text-blue-400">
-                                <HiDownload className="w-5 h-5 mr-2" />
-                                Download Resume
-                            </div>
-                        </motion.a>
                     </div>
 
                     {/* Social Links */}
