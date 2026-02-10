@@ -7,7 +7,12 @@ import { projects } from '@/data/projects';
 import Badge from '@/components/ui/Badge';
 import { HiArrowRight } from 'react-icons/hi';
 
-const categories = ['AI + Full Stack', 'Web Development', 'Other CS Projects'];
+const categories = [
+    'Production Full-Stack Systems',
+    'AI-Powered Applications',
+    'Web & PWA Products',
+    'Academic & Experimental Projects'
+];
 
 export default function ProjectsPage() {
     return (

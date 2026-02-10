@@ -1,21 +1,51 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
-import { HiMail, HiPhone, HiLocationMarker } from 'react-icons/hi';
+import { useState, useRef } from 'react';
+import { HiMail, HiLocationMarker } from 'react-icons/hi';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
+
+// EmailJS Configuration
+const EMAILJS_SERVICE_ID = 'service_s3sd8ri';
+const EMAILJS_TEMPLATE_ID = 'template_j1ntgsz';
+const EMAILJS_PUBLIC_KEY = 'u7PN_Rrpxje7Wgq_t';
 
 export default function Contact() {
+    const formRef = useRef<HTMLFormElement>(null);
     const [formData, setFormData] = useState({
-        name: '',
-        email: '',
+        from_name: '',
+        from_email: '',
+        subject: '',
         message: '',
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // TODO: Implement form submission
-        alert('Form submission will be implemented with a backend service');
+        
+        if (!formRef.current) return;
+
+        setIsSubmitting(true);
+        setSubmitStatus('idle');
+
+        try {
+            await emailjs.sendForm(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                formRef.current,
+                EMAILJS_PUBLIC_KEY
+            );
+            
+            setSubmitStatus('success');
+            setFormData({ from_name: '', from_email: '', subject: '', message: '' });
+        } catch (error) {
+            console.error('Email sending failed:', error);
+            setSubmitStatus('error');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -23,6 +53,9 @@ export default function Contact() {
             ...formData,
             [e.target.name]: e.target.value,
         });
+        if (submitStatus !== 'idle') {
+            setSubmitStatus('idle');
+        }
     };
 
     return (
@@ -39,7 +72,7 @@ export default function Contact() {
                     </h2>
                     <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-4"></div>
                     <p className="text-center text-slate-600 dark:text-slate-400 mb-12 max-w-2xl mx-auto px-4">
-                        I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+                        Have a project in mind or want to collaborate? I'd love to hear from you!
                     </p>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -51,57 +84,92 @@ export default function Contact() {
                             transition={{ duration: 0.5 }}
                             className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-6 sm:p-8 shadow-lg"
                         >
-                            <form onSubmit={handleSubmit} className="space-y-6">
+                            {/* Status Messages */}
+                            {submitStatus === 'success' && (
+                                <div className="mb-4 p-4 bg-green-100 dark:bg-green-900/30 border border-green-500 rounded-lg text-green-700 dark:text-green-400">
+                                    Thank you for your message! I'll get back to you soon.
+                                </div>
+                            )}
+                            {submitStatus === 'error' && (
+                                <div className="mb-4 p-4 bg-red-100 dark:bg-red-900/30 border border-red-500 rounded-lg text-red-700 dark:text-red-400">
+                                    Failed to send message. Please try again or email me directly.
+                                </div>
+                            )}
+                            
+                            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+                                <input type="hidden" name="to_email" value="muhammadhammadirfan1@gmail.com" />
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label htmlFor="contact-name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                                            Name
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="contact-name"
+                                            name="from_name"
+                                            value={formData.from_name}
+                                            onChange={handleChange}
+                                            required
+                                            disabled={isSubmitting}
+                                            className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-slate-900 dark:text-slate-100 disabled:opacity-50"
+                                            placeholder="Your name"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="contact-email" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                                            Email
+                                        </label>
+                                        <input
+                                            type="email"
+                                            id="contact-email"
+                                            name="from_email"
+                                            value={formData.from_email}
+                                            onChange={handleChange}
+                                            required
+                                            disabled={isSubmitting}
+                                            className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-slate-900 dark:text-slate-100 disabled:opacity-50"
+                                            placeholder="your.email@example.com"
+                                        />
+                                    </div>
+                                </div>
                                 <div>
-                                    <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                                        Name
+                                    <label htmlFor="contact-subject" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                                        Subject
                                     </label>
                                     <input
                                         type="text"
-                                        id="name"
-                                        name="name"
-                                        value={formData.name}
+                                        id="contact-subject"
+                                        name="subject"
+                                        value={formData.subject}
                                         onChange={handleChange}
                                         required
-                                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-slate-900 dark:text-slate-100"
-                                        placeholder="Your name"
+                                        disabled={isSubmitting}
+                                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-slate-900 dark:text-slate-100 disabled:opacity-50"
+                                        placeholder="What's this about?"
                                     />
                                 </div>
                                 <div>
-                                    <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                                        Email
-                                    </label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        required
-                                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-slate-900 dark:text-slate-100"
-                                        placeholder="your.email@example.com"
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="message" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                                    <label htmlFor="contact-message" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                                         Message
                                     </label>
                                     <textarea
-                                        id="message"
+                                        id="contact-message"
                                         name="message"
                                         value={formData.message}
                                         onChange={handleChange}
                                         required
+                                        disabled={isSubmitting}
                                         rows={5}
-                                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none text-slate-900 dark:text-slate-100"
-                                        placeholder="Your message..."
+                                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none text-slate-900 dark:text-slate-100 disabled:opacity-50"
+                                        placeholder="Tell me about your project or inquiry..."
                                     />
                                 </div>
                                 <button
                                     type="submit"
-                                    className="w-full px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-[1.02]"
+                                    disabled={isSubmitting}
+                                    className="w-full px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                                 >
-                                    Send Message
+                                    {isSubmitting ? 'Sending...' : 'Send Message'}
                                 </button>
                             </form>
                         </motion.div>
@@ -162,6 +230,17 @@ export default function Contact() {
                                         <FaLinkedin className="w-6 h-6 text-white" />
                                     </a>
                                 </div>
+                            </div>
+
+                            <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:border-green-500/50 dark:hover:border-green-400/50">
+                                <div className="flex items-center gap-3 mb-2">
+                                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                                    <h3 className="font-bold text-slate-900 dark:text-slate-100">Availability</h3>
+                                </div>
+                                <p className="text-slate-600 dark:text-slate-400 text-sm">
+                                    I'm currently open to freelance projects and full-time opportunities.
+                                    Let's discuss how we can work together!
+                                </p>
                             </div>
                         </motion.div>
                     </div>

@@ -1,7 +1,7 @@
 export interface Project {
     slug: string;
     title: string;
-    category: 'AI + Full Stack' | 'Web Development' | 'Other CS Projects'|'Full Stack + PWA';
+    category: 'Production Full-Stack Systems' | 'AI-Powered Applications' | 'Web & PWA Products' | 'Academic & Experimental Projects';
     shortDescription: string;
     longDescription: string;
     problem: string;
@@ -19,7 +19,7 @@ export const projects: Project[] = [
     {
         slug: 'miprinters',
         title: 'MI Printers',
-        category: 'Full Stack + PWA',
+        category: 'Web & PWA Products',
         shortDescription: 'Offline-first invoice management system for a printing business with cloud sync',
         longDescription: 'A Progressive Web App (PWA) invoice management system built for a printing business, featuring offline-first architecture with IndexedDB, real-time cloud synchronization with Supabase, and owner-only authentication for secure business operations.',
         problem: 'Small printing businesses need a reliable invoicing system that works even without internet connectivity. Traditional cloud-only solutions fail in areas with unstable network, leading to lost sales and frustrated customers waiting for invoice generation.',
@@ -34,7 +34,7 @@ export const projects: Project[] = [
     {
         slug: 'kidneycare-assistant',
         title: 'KidneyCare Clinical Assistant',
-        category: 'AI + Full Stack',
+        category: 'AI-Powered Applications',
         shortDescription: 'AI medical tool for nephrologists providing clinical decision support',
         longDescription: 'Built a real-world clinical decision support system for nephrologists to aid in clinical decisions based on lab values like iPTH, calcium, and phosphorus. Designed to handle edge cases and provide safe, logic-driven treatment recommendations.',
         problem: 'Nephrologists need to make complex clinical decisions based on multiple lab values and patient conditions. Manual analysis is time-consuming and prone to oversight, especially with edge cases like missing or outdated labs.',
@@ -49,7 +49,7 @@ export const projects: Project[] = [
     {
         slug: 'edusync',
         title: 'EduSync',
-        category: 'Web Development',
+        category: 'Production Full-Stack Systems',
         shortDescription: 'Role-based university automation platform for scheduling and onboarding',
         longDescription: 'A SaaS platform automating university operations including faculty/student onboarding, scheduling, and invoicing. Improved workflow efficiency by automating repetitive administrative tasks.',
         problem: 'Universities face significant administrative overhead with manual processes for onboarding, scheduling, and invoicing. This leads to inefficiencies, errors, and wasted staff time.',
@@ -64,7 +64,7 @@ export const projects: Project[] = [
     {
         slug: 'lingomate',
         title: 'LingoMate',
-        category: 'AI + Full Stack',
+        category: 'AI-Powered Applications',
         shortDescription: 'AI-powered conversational English practice with real-time speech processing.',
         longDescription:
             'LingoMate is a full-stack AI-powered conversational English practice platform. It enables users to speak with an AI in real time using speech-to-text, intelligent responses, and text-to-speech. Designed to help non-native speakers build fluency, confidence, and interview readiness through natural conversation.',
@@ -103,7 +103,7 @@ export const projects: Project[] = [
             '/projects/lingomate/LingoMateShortDemo.mp4'
         ],
 
-        featured: true
+        featured: false
     },
 
 ];
