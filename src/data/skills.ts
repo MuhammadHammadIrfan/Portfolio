@@ -34,8 +34,9 @@ export const skillsData: SkillCategory[] = [
         skills: ['OOP', 'Data Structures', 'System Architecture', 'API Design', 'Workflow Modeling'],
     },
     {
-        category: 'Professional Skills',
-        skills: ['System Thinking', 'Architecture Design', 'Data Flow Modeling', 'Reliable AI Pipelines', 'Problem Solving', 'Clean Code', 'Technical Documentation'],
+        category: 'Professional & Engineering Skills',
+        skills: ['System Thinking','Architecture Design','API Design Principles','Scalable Backend Design','Problem Solving','Clean Code Practices','Technical Documentation'],
     },
+
 ];
 
