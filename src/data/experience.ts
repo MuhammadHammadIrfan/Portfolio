@@ -9,29 +9,28 @@ export interface Experience {
 
 export const experiences: Experience[] = [
     {
+        id: 'devneuron',
+        title: 'Forward-Deployed AI Engineering Intern',
+        company: 'DevNeuron',
+        period: 'Mar 2026 – Present',
+        description: [
+            'Auditing enterprise agentic systems against the OWASP Top 10 framework to identify and mitigate critical architectural risks like Excessive Agency and Goal Hijacking.',
+            'Developing open-source SAST modules to automate structural security mapping, tool boundary validation, and Zero Trust compliance across multi-agent orchestrations.',
+        ],
+        current: true,
+    },
+    {
         id: 'kidneycare',
         title: 'AI & Software Developer',
         company: 'KidneyCare Clinical Assistant — SEECS, NUST',
-        period: 'Jun 2025 – Present',
+        period: 'Jun 2025 – Feb 2026',
         description: [
             'Developed a clinical decision support system to assist nephrologists in analyzing patient data and treatment options.',
             'Implemented rule-based AI logic aligned with medical guidelines to generate safe, explainable recommendations.',
             'Designed workflows that handle missing or unreliable lab data, ensuring reliable and structured outputs for physicians.',
             'Delivered a functional MVP used for feedback and validation by instructors and kidney specialists, supporting real clinical decision-making.',
         ],
-        current: true,
-    },
-    {
-        id: 'ai-agentic',
-        title: 'LLM & Agentic Automation Developer',
-        company: 'Independent Research & Implementation',
-        period: 'Jan 2025 – Present',
-        description: [
-            'Designed and implemented agent-based AI systems that combine LLM reasoning with tool usage, context retrieval, and function calling.',
-            'Built end-to-end pipelines integrating Supabase (PostgreSQL and vector storage) to automate workflows across databases, APIs, and AI models.',
-            'Enabled real business automation by connecting multi-system architectures into reliable AI-driven solutions.',
-        ],
-        current: true,
+        current: false,
     },
     {
         id: 'askussolution',

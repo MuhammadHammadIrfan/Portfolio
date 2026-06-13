@@ -1,35 +1,34 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { HiCode, HiDatabase, HiLightningBolt, HiChip } from 'react-icons/hi';
+import { HiCode, HiDatabase, HiLightningBolt, HiChip, HiShieldCheck } from 'react-icons/hi';
 
 const expertiseAreas = [
     {
-        icon: HiCode,
-        title: 'Full-Stack Development',
-        description: 'Building production-grade web applications with React, Next.js, Node.js, and Express',
-        gradient: 'from-blue-500 to-cyan-500',
-    },
-    {
-        icon: HiDatabase,
-        title: 'Backend Architecture & Databases',
-        description: 'Designing reliable data models, APIs, and workflows using PostgreSQL, Supabase, MongoDB, and MySQL',
-        gradient: 'from-purple-500 to-pink-500',
-    },
-    {
         icon: HiChip,
-        title: 'AI & Automation',
-        description: 'Integrating LLMs, LangChain, AI agents, and workflow automation into real-world systems',
+        title: 'Multi-Agent AI Orchestration',
+        description: 'Building autonomous agent workflows, implementing reliable function calling, and engineering custom AI integrations.',
         gradient: 'from-orange-500 to-red-500',
     },
     {
-        icon: HiLightningBolt,
-        title: 'Adaptability & Problem Solving',
-        description: 'Quickly mastering new technologies and designing solutions for complex challenges',
+        icon: HiShieldCheck,
+        title: 'LLM Security & Architecture',
+        description: 'Auditing agents against the OWASP Top 10, enforcing Zero Trust tool boundaries, and mitigating Excessive Agency.',
         gradient: 'from-green-500 to-emerald-500',
     },
+    {
+        icon: HiDatabase,
+        title: 'Backend & Vector Databases',
+        description: 'Designing scalable data flows and semantic search architectures using PostgreSQL, Supabase, and PGVector.',
+        gradient: 'from-purple-500 to-pink-500',
+    },
+    {
+        icon: HiLightningBolt,
+        title: 'Production Pipelines',
+        description: 'Engineering end-to-end automation workflows that bridge complex APIs to solve direct operational business bottlenecks.',
+        gradient: 'from-blue-500 to-cyan-500',
+    },
 ];
-
 
 export default function About() {
     return (
@@ -48,7 +47,7 @@ export default function About() {
 
                     <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-8 mb-8 shadow-lg">
                         <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed text-center max-w-4xl mx-auto">
-                            I’m a full-stack developer with a strong backend focus, experienced in building AI-powered and data-driven applications. I enjoy tackling real-world problems by combining databases, APIs, and AI models into reliable systems. From designing scalable architectures to delivering production-ready solutions, I thrive in fast-paced, collaborative environments and continuously adapt to new technologies to create meaningful impact.
+                            I’m an AI Engineer and Full-Stack Developer specialized in building production-grade autonomous systems. My core focus is bridging scalable backend architecture with secure AI-driven logic, particularly through multi-agent orchestration and enforcing strict LLM tool boundaries. Whether I am auditing enterprise agents, developing vector-based data platforms, or engineering reliable automation pipelines, I build robust systems that solve complex, real-world business constraints.
                         </p>
                     </div>
 

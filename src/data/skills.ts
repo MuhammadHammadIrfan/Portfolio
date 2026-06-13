@@ -6,37 +6,36 @@ export interface SkillCategory {
 export const skillsData: SkillCategory[] = [
     {
         category: 'Core Stack',
-        skills: ['Node.js', 'Python', 'Next.js', 'React', 'Express.js', 'TypeScript'],
+        skills: ['Node.js', 'Python', 'Next.js', 'React', 'TypeScript', 'Express.js'],
     },
     {
-        category: 'AI & Automation',
+        category: 'AI Engineering & Security',
         skills: [
-            'LLM Function Calling', 
-            'Agentic Workflows', 
-            'LangChain', 
-            'LlamaIndex', 
-            'n8n', 
-            'Prompt Engineering', 
-            'Vector DBs (PGVector)', 
+            'Multi-Agent Orchestration',
+            'LLM Function Calling',
+            'Vector DBs',
+            'LLM Security & Red-Teaming',
+            'OWASP Top 10 for LLMs',
+            'Embeddings',
             'Automated Pipelines'
         ],
     },
     {
         category: 'Backend & Databases',
-        skills: ['PostgreSQL', 'Supabase', 'MongoDB', 'MySQL', 'Redis', 'Prisma ORM', 'REST APIs'],
+        skills: ['PostgreSQL', 'Supabase', 'MongoDB', 'Redis', 'Prisma ORM', 'REST APIs & Webhooks'],
     },
     {
-        category: 'Cloud & Tools',
-        skills: ['Git', 'GitHub', 'Vercel', 'Firebase', 'Docker (Basic)', 'AWS (Basic)', 'Webhooks', 'CI/CD Basics'],
+        category: 'Cloud & Infrastructure',
+        skills: ['Git / GitHub', 'Docker', 'AWS', 'Vercel', 'Firebase', 'CI/CD Pipelines'],
     },
     {
-        category: 'Computer Science Fundamentals',
-        skills: ['OOP', 'Data Structures', 'System Architecture', 'API Design', 'Workflow Modeling'],
-    },
-    {
-        category: 'Professional & Engineering Skills',
-        skills: ['System Thinking','Architecture Design','API Design Principles','Scalable Backend Design','Problem Solving','Clean Code Practices','Technical Documentation'],
-    },
-
+        category: 'Architecture & Engineering',
+        skills: [
+            'System Architecture',
+            'Zero Trust Architecture',
+            'Data Flow Modeling',
+            'Scalable Backend Design',
+            'Technical Documentation'
+        ],
+    }
 ];
-

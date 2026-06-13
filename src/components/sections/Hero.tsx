@@ -2,11 +2,12 @@
 
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
-import { HiDownload, HiViewGrid, HiEye } from 'react-icons/hi';
+import { HiViewGrid, HiEye } from 'react-icons/hi';
 import { useEffect, useState } from 'react';
 
 export default function Hero() {
-    const fullText = 'Full Stack Developer | Next.js | React | Node.js | Supabase | AI Integration';
+    // Updated to lead with AI Engineering while keeping the core stack visible
+    const fullText = 'AI Engineer & Full-Stack Developer | Multi-Agent Systems | Next.js | Node.js';
     const [displayedText, setDisplayedText] = useState('');
     const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -19,7 +20,7 @@ export default function Hero() {
             }, 50); // 50ms per character for smooth typing
             return () => clearTimeout(timeout);
         }
-    }, [currentIndex]);
+    }, [currentIndex, fullText]);
 
     return (
         <section className="min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
@@ -45,9 +46,9 @@ export default function Hero() {
                         {currentIndex < fullText.length && <span className="animate-pulse">|</span>}
                     </p>
 
+                    {/* Updated description to match the new specialized AI/Production focus */}
                     <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-8">
-                        Passionate full-stack developer specializing in building AI-powered and data-driven applications.
-                        Experienced in end-to-end development from architecture to deployment.
+                        Bridging robust backend architecture with secure AI-driven logic. Specialized in orchestrating autonomous workflows, enforcing LLM security, and building scalable, production-ready systems.
                     </p>
 
                     {/* CTA Buttons with Gradients */}
