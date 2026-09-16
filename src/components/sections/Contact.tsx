@@ -2,14 +2,16 @@
 
 import { motion } from 'framer-motion';
 import { useState, useRef } from 'react';
-import { HiMail, HiLocationMarker } from 'react-icons/hi';
+import { HiMail, HiLocationMarker, HiCheckCircle, HiExclamationCircle } from 'react-icons/hi';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
 
 // EmailJS Configuration
-const EMAILJS_SERVICE_ID = 'service_s3sd8ri';
-const EMAILJS_TEMPLATE_ID = 'template_j1ntgsz';
-const EMAILJS_PUBLIC_KEY = 'u7PN_Rrpxje7Wgq_t';
+// Ensure your EmailJS Service is linked to your Gmail (muhammadhammadirfan1@gmail.com)
+// and that your EmailJS Template "To Email" is set to muhammadhammadirfan1@gmail.com (or {{to_email}})
+const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'service_7seucos';
+const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_j1ntgsz';
+const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'u7PN_Rrpxje7Wgq_t';
 
 export default function Contact() {
     const formRef = useRef<HTMLFormElement>(null);
@@ -21,6 +23,7 @@ export default function Contact() {
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+    const [errorMessage, setErrorMessage] = useState<string>('');
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -29,20 +32,28 @@ export default function Contact() {
 
         setIsSubmitting(true);
         setSubmitStatus('idle');
+        setErrorMessage('');
 
         try {
-            await emailjs.sendForm(
+            // Send email using EmailJS
+            const result = await emailjs.sendForm(
                 EMAILJS_SERVICE_ID,
                 EMAILJS_TEMPLATE_ID,
                 formRef.current,
                 EMAILJS_PUBLIC_KEY
             );
             
-            setSubmitStatus('success');
-            setFormData({ from_name: '', from_email: '', subject: '', message: '' });
-        } catch (error) {
+            if (result.status === 200 || result.text === 'OK') {
+                setSubmitStatus('success');
+                setFormData({ from_name: '', from_email: '', subject: '', message: '' });
+            } else {
+                throw new Error(result.text || 'Unexpected response status');
+            }
+        } catch (error: any) {
             console.error('Email sending failed:', error);
             setSubmitStatus('error');
+            const detail = error?.text || error?.message || 'EmailJS service rejected the request. Please check your credentials or send directly via email.';
+            setErrorMessage(detail);
         } finally {
             setIsSubmitting(false);
         }
@@ -55,8 +66,11 @@ export default function Contact() {
         });
         if (submitStatus !== 'idle') {
             setSubmitStatus('idle');
+            setErrorMessage('');
         }
     };
+
+    const mailtoHref = `mailto:muhammadhammadirfan1@gmail.com?subject=${encodeURIComponent(formData.subject || 'Portfolio Inquiry')}&body=${encodeURIComponent(`Hi Hammad,\n\n${formData.message}\n\nFrom: ${formData.from_name} (${formData.from_email})`)}`;
 
     return (
         <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-slate-50 dark:from-slate-800 dark:to-slate-900/50">
@@ -72,7 +86,7 @@ export default function Contact() {
                     </h2>
                     <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-4"></div>
                     <p className="text-center text-slate-600 dark:text-slate-400 mb-12 max-w-2xl mx-auto px-4">
-                        Have a project in mind or want to collaborate? I'd love to hear from you!
+                        Have a project in mind, research collaboration, or inquiry? Send me a message and it will be delivered directly to my inbox at <strong className="text-blue-600 dark:text-blue-400">muhammadhammadirfan1@gmail.com</strong>.
                     </p>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -86,13 +100,39 @@ export default function Contact() {
                         >
                             {/* Status Messages */}
                             {submitStatus === 'success' && (
-                                <div className="mb-4 p-4 bg-green-100 dark:bg-green-900/30 border border-green-500 rounded-lg text-green-700 dark:text-green-400">
-                                    Thank you for your message! I'll get back to you soon.
+                                <div className="mb-6 p-4 bg-green-50 dark:bg-green-950/40 border border-green-500/30 rounded-xl text-green-800 dark:text-green-300 flex items-start gap-3">
+                                    <HiCheckCircle className="w-5 h-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                                    <div>
+                                        <p className="font-semibold">Thank you for your message!</p>
+                                        <p className="text-sm text-green-700 dark:text-green-400 mt-0.5">
+                                            Your message was dispatched successfully to muhammadhammadirfan1@gmail.com. I will get back to you shortly.
+                                        </p>
+                                    </div>
                                 </div>
                             )}
+
                             {submitStatus === 'error' && (
-                                <div className="mb-4 p-4 bg-red-100 dark:bg-red-900/30 border border-red-500 rounded-lg text-red-700 dark:text-red-400">
-                                    Failed to send message. Please try again or email me directly.
+                                <div className="mb-6 p-4 bg-red-50 dark:bg-red-950/40 border border-red-500/30 rounded-xl text-red-800 dark:text-red-300 flex flex-col gap-3">
+                                    <div className="flex items-start gap-3">
+                                        <HiExclamationCircle className="w-5 h-5 text-red-600 dark:text-red-400 mt-0.5 flex-shrink-0" />
+                                        <div>
+                                            <p className="font-semibold">Failed to send message via automated service</p>
+                                            <p className="text-xs text-red-700 dark:text-red-400 mt-1 font-mono">
+                                                {errorMessage}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div className="pt-2 border-t border-red-200 dark:border-red-900/50 flex flex-wrap items-center justify-between gap-2">
+                                        <span className="text-xs text-slate-600 dark:text-slate-400">
+                                            Direct email fallback:
+                                        </span>
+                                        <a
+                                            href={mailtoHref}
+                                            className="inline-flex items-center px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-semibold transition-colors"
+                                        >
+                                            Open in Email App
+                                        </a>
+                                    </div>
                                 </div>
                             )}
                             
@@ -188,8 +228,8 @@ export default function Contact() {
                                         <HiMail className="w-6 h-6 text-white" />
                                     </div>
                                     <div className="min-w-0 flex-1">
-                                        <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-1">Email</h3>
-                                        <a href="mailto:muhammadhammadirfan1@gmail.com" className="text-blue-600 dark:text-blue-400 hover:underline break-all text-sm sm:text-base">
+                                        <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-1">Direct Email</h3>
+                                        <a href="mailto:muhammadhammadirfan1@gmail.com" className="text-blue-600 dark:text-blue-400 hover:underline break-all text-sm sm:text-base font-semibold">
                                             muhammadhammadirfan1@gmail.com
                                         </a>
                                     </div>
@@ -238,8 +278,7 @@ export default function Contact() {
                                     <h3 className="font-bold text-slate-900 dark:text-slate-100">Availability</h3>
                                 </div>
                                 <p className="text-slate-600 dark:text-slate-400 text-sm">
-                                    I'm currently open to freelance projects and full-time opportunities.
-                                    Let's discuss how we can work together!
+                                    I'm currently open to research collaborations, AI engineering roles, and innovative freelance projects.
                                 </p>
                             </div>
                         </motion.div>

@@ -17,12 +17,17 @@ export const skillsData: SkillCategory[] = [
             'LLM Security & Red-Teaming',
             'OWASP Top 10 for LLMs',
             'Embeddings',
+            'LiteLLM',
             'Automated Pipelines'
         ],
     },
     {
+        category: 'Research & ML Systems',
+        skills: ['PyTorch', 'scikit-learn', 'NumPy', 'Pandas', 'Matplotlib', 'Seaborn'],
+    },
+    {
         category: 'Backend & Databases',
-        skills: ['PostgreSQL', 'Supabase', 'MongoDB', 'Redis', 'Prisma ORM', 'REST APIs & Webhooks'],
+        skills: ['PostgreSQL', 'Supabase', 'MongoDB', 'Redis', 'Prisma ORM', 'REST APIs & Webhooks', 'RBAC & Row-Level Security'],
     },
     {
         category: 'Cloud & Infrastructure',
